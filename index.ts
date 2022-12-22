@@ -2,7 +2,7 @@ import { interval, timer, Subject } from 'rxjs';
 import { take, tap } from 'rxjs/operators';
 
 const source = interval(1000).pipe(
-  take(1),
+  take(2),
   tap((x) => console.log('Emits: ', x)),
 );
 
