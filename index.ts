@@ -1,5 +1,5 @@
 import { interval, timer, Subject } from 'rxjs';
-import { take, tap } from 'rxjs/operators';
+import { take, tap } from 'rxjs';
 
 const source = interval(1000).pipe(
   take(2),
