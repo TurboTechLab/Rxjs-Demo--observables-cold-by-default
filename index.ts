@@ -1,15 +1,11 @@
+import { interval, timer, Subject } from 'rxjs';
+import { take, tap } from 'rxjs/operators';
 
-import { Observable } from 'rxjs';
+const source = interval(1000).pipe(
+  take(1),
+  tap((x) => console.log('Emits: ', x)),
+);
 
-const randomValue = () => Math.round(Math.random() * 10);
-
-const unicastByDefault = new Observable((observer) => {
-  observer.next(randomValue());
-  observer.complete();
-});
-
-//Each subscription is likely to get different output
-unicastByDefault.subscribe(v => console.log(v))
-unicastByDefault.subscribe(v => console.log(v))
-unicastByDefault.subscribe(v => console.log(v))
+source.subscribe((v) => console.log('subscription1: ', v)),
+source.subscribe((v) => console.log('subscription2: ', v));
 
